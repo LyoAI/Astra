@@ -63,8 +63,10 @@ bash scripts/code/run.sh
 bash scripts/commonsense/run.sh
 ```
 
-## ⭐ Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=LyoAI/Astra&type=Date)](https://star-history.com/#LyoAI/Astra&Date)
+## Star History
+
+[![Star History Chart](https://api.star-history.com/image?repos=LyoAI/Astra&type=date&logscale&legend=bottom-right)](https://www.star-history.com/?repos=LyoAI%2FAstra&type=date&logscale=&legend=bottom-right)
+
 
 
 
