@@ -3,7 +3,6 @@
 
 <p align="center">
     <a href="https://arxiv.org/abs/2602.19111"><img alt="Paper" src="https://img.shields.io/badge/📄-Paper-orange"></a>
-    <a href="https://github.com/LyoAI/Astra/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/LyoAI/Astra"></a>
 </p>
 
 ## 🔍Overview
@@ -62,6 +61,7 @@ bash scripts/code/run.sh
 # commonsense
 bash scripts/commonsense/run.sh
 ```
+
 
 
 
