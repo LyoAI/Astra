@@ -9,6 +9,10 @@
 ## 🔍Overview
 In this work, we propose Astra (Activation-Space Tail-Eigenvector Low-Rank Adaptation), a novel PEFT method that leverages the tail eigenvectors of the model output activations-estimated from a small task-specific calibration set-to construct task-adaptive low-rank adapters. By constraining updates to the subspace spanned by these tail eigenvectors, Astra achieves faster convergence and improved downstream performance with a significantly reduced parameter budget. Extensive experiments across natural language understanding (NLU) and natural language generation (NLG) tasks demonstrate that Astra consistently outperforms existing PEFT baselines across 16 benchmarks and even surpasses full fine-tuning (FFT) in certain scenarios.
 
+<img width="1041" height="395" alt="image" src="https://github.com/user-attachments/assets/a990903e-d922-49d0-8878-5e79b8529181" />
+
+<img width="1048" height="520" alt="image" src="https://github.com/user-attachments/assets/0e7b0aee-25ec-484c-b341-1df287c4d254" />
+
 
 ## 🎯Quick Start
 
