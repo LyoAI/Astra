@@ -63,15 +63,6 @@ bash scripts/metamath/run.sh
 # code
 bash scripts/code/run.sh
 
-# commonsense
-bash scripts/commonsense/run.sh
-```
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/image?repos=LyoAI/Astra&type=date&logscale&legend=bottom-right)](https://www.star-history.com/?repos=LyoAI%2FAstra&type=date&logscale=&legend=bottom-right)
-
-
 
 
 
