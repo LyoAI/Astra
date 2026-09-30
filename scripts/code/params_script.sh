@@ -17,7 +17,6 @@ export OUTPUT_PATH="outputs/code-${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}"
 #astra configurations
 export CACHE_FILE="cache/Eigen-${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}.pt"
 export COVARIANCE_FILE="cache/Covariance-${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}.pt"
-export ASTRA_METHOD="IPM" # "KPM"
 export USE_FLOAT16_FOR_COVARIANCE=true
 export PRUNE_TEMPORARY_FIELDS=true
 
@@ -74,8 +73,8 @@ export AVAILABLE_DEVICES="0"
 export EVAL_DEVICE="0,1,2,3"
 
 # Logging arguments
-export LOG_FILE="logs/code/${INIT_WEIGHTS}-${ASTRA_METHOD}-${MODEL_NAME}-r${LORA_RANK}.log"
-export LOG_DIR="logs/log_history/code/${INIT_WEIGHTS}-${ASTRA_METHOD}-${MODEL_NAME}-r${LORA_RANK}"
+export LOG_FILE="logs/code/${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}.log"
+export LOG_DIR="logs/log_history/code/${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}"
 export REPORT_TO="wandb"
 
 # Calibration parameters
@@ -83,8 +82,6 @@ export CALIBRATION_DATASET="code"
 export NUM_CALIBRATION_SAMPLES=256
 export CALIBRATION_MAX_SEQ_LENGTH=512
 export CALIBRATION_DEVICE="cuda:0"
-export RANK_ALLOCATION=false
-export RANK_PATTERN_PATH="cache/rank_pattern.pt"
 
 # Helper functions
 setup_logging() {
@@ -94,8 +91,8 @@ setup_logging() {
         LOG_DIR="logs/log_history/code/${INIT_WEIGHTS}_${MODEL_NAME}"
         LOG_FILE="logs/code/${INIT_WEIGHTS}_${MODEL_NAME}.log"
     else
-        LOG_DIR="logs/log_history/code/${INIT_WEIGHTS}-${ASTRA_METHOD}-${MODEL_NAME}-r${LORA_RANK}"
-        LOG_FILE="logs/code/${INIT_WEIGHTS}-${ASTRA_METHOD}-${MODEL_NAME}-r${LORA_RANK}.log"
+        LOG_DIR="logs/log_history/code/${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}"
+        LOG_FILE="logs/code/${INIT_WEIGHTS}-${MODEL_NAME}-r${LORA_RANK}.log"
     fi
 }
 
@@ -114,25 +111,25 @@ print_params() {
     echo "RES_MODEL: $RES_MODEL"
     echo "ADAPTER_PATH: $ADAPTER_PATH"
     echo "OUTPUT_PATH: $OUTPUT_PATH"
-    
+
     echo "++++++++++Astra configurations++++++++++"
     echo "CACHE_FILE: $CACHE_FILE"
     echo "COVARIANCE_FILE: $COVARIANCE_FILE"
     echo "USE_FLOAT16_FOR_COVARIANCE: $USE_FLOAT16_FOR_COVARIANCE"
     echo "PRUNE_TEMPORARY_FIELDS: $PRUNE_TEMPORARY_FIELDS"
-    
+
     echo "++++++++++Quantization parameters++++++++++"
     echo "BITS: $BITS"
     echo "DOUBLE_QUANT: $DOUBLE_QUANT"
     echo "QUANT_TYPE: $QUANT_TYPE"
-    
+
     echo "++++++++++Data parameters++++++++++"
     echo "DATA_PATH: $DATA_PATH"
     echo "SUB_TASK: $SUB_TASK"
     echo "DATASET_SPLIT: $DATASET_SPLIT"
     echo "DATASET_FIELD: $DATASET_FIELD"
     echo "SHUFFLE_DATASET: $SHUFFLE_DATASET"
-    
+
     echo "++++++++++Training parameters++++++++++"
     echo "OPTIM: $OPTIM"
     echo "MODEL_MAX_LENGTH: $MODEL_MAX_LENGTH"
@@ -155,24 +152,22 @@ print_params() {
     echo "SAVE_STEPS: $SAVE_STEPS"
     echo "SAVE_TOTAL_LIMIT: $SAVE_TOTAL_LIMIT"
     echo "LOGGING_STEPS: $LOGGING_STEPS"
-    
+
     echo "++++++++++Device configuration++++++++++"
     echo "MASTER_PORT: $MASTER_PORT"
     echo "LOCALHOST: $LOCALHOST"
     echo "NUM_GPUS: $NUM_GPUS"
     echo "WORLD_SIZE: $WORLD_SIZE"
     echo "AVAILABLE_DEVICES: $AVAILABLE_DEVICES"
-    
+
     echo "++++++++++Logging parameters++++++++++"
     echo "LOG_FILE: $LOG_FILE"
     echo "LOG_DIR: $LOG_DIR"
     echo "REPORT_TO: $REPORT_TO"
-    
+
     echo "++++++++++Calibration parameters++++++++++"
     echo "CALIBRATION_DATASET: $CALIBRATION_DATASET"
     echo "NUM_CALIBRATION_SAMPLES: $NUM_CALIBRATION_SAMPLES"
     echo "CALIBRATION_MAX_SEQ_LENGTH: $CALIBRATION_MAX_SEQ_LENGTH"
     echo "CALIBRATION_DEVICE: $CALIBRATION_DEVICE"
-    echo "RANK_ALLOCATION: $RANK_ALLOCATION"
-    echo "RANK_PATTERN_PATH: $RANK_PATTERN_PATH"
 }

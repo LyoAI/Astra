@@ -29,3 +29,5 @@ htmlcov/
 
 # custom
 assets/
+.DS_Store
+peft_astra/

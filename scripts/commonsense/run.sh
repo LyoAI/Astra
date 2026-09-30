@@ -17,7 +17,6 @@ else
         --base_model_path $MODEL_NAME_OR_PATH \
         --bits $BITS \
         --output_dir $RES_MODEL \
-        --init_weights $INIT_WEIGHTS \
         --lora_r $LORA_RANK \
         --lora_alpha $LORA_ALPHA \
         --lora_dropout $LORA_DROPOUT \
@@ -30,11 +29,10 @@ else
         --verbose \
         --log_file $LOG_FILE \
         --calib_on_inputs \
-        $([ "$RANK_ALLOCATION" = true ] && echo "--rank_allocation") \
-        --rank_pattern $RANK_PATTERN_PATH \
         --cache_file $CACHE_FILE \
+        --covariance_file $COVARIANCE_FILE \
         $([ "$USE_FLOAT16_FOR_COVARIANCE" = true ] && echo "--use_float16_for_covariance") \
-        $([ "$PRUNE_TEMPORARY_FIELDS" = true ] && echo "--prune_temporary_fields")
+        $([ "$PRUNE_TEMPORARY_FIELDS" = true ] && echo "--prune_temporary_fields" || echo "--no-prune_temporary_fields")
 fi
 
 # batch size = per_device_train_batch_size * gradient_accumulation_steps * num_gpus = 128  --warmup_ratio 0.03 \
@@ -47,7 +45,7 @@ deepspeed --master_port=$MASTER_PORT --include=$LOCALHOST train.py \
     --lora_rank $LORA_RANK \
     --lora_alpha $LORA_ALPHA \
     --lora_dropout $LORA_DROPOUT \
-    --adapter_name_or_path "$(echo ${INIT_WEIGHTS} | tr '[:upper:]' '[:lower:]')_init" \
+    --adapter_name_or_path astra_init \
     --data_path $DATA_PATH \
     --sub_task $SUB_TASK \
     --dataset_split $DATASET_SPLIT \
